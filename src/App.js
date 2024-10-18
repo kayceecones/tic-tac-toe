@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+const X_SYMBOL = "🐴";
+const O_SYMBOL = "🐮";
+
 function Square({ value, onSquareClick }) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -15,9 +18,9 @@ function Board({ xIsNext, squares, onPlay }) {
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = "X";
+      nextSquares[i] = X_SYMBOL;
     } else {
-      nextSquares[i] = "O";
+      nextSquares[i] = O_SYMBOL;
     }
     onPlay(nextSquares);
   }
@@ -27,7 +30,7 @@ function Board({ xIsNext, squares, onPlay }) {
   if (winner) {
     status = "Winner: " + winner;
   } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
+    status = "Next player: " + (xIsNext ? X_SYMBOL : O_SYMBOL);
   }
 
   return (
